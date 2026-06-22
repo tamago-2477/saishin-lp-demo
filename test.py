@@ -20,7 +20,7 @@ st.markdown("""
         gap: 15px;
     }
 
-    /* --- 1. ロゴ部分のデザイン --- */
+    /* --- 1. ロゴ部分のデザイン（★ここをリンク用に修正★） --- */
     .fake-logo {
         font-family: sans-serif;
         font-size: 26px;
@@ -29,7 +29,14 @@ st.markdown("""
         display: flex;
         align-items: center;
         gap: 10px;
+        text-decoration: none; /* リンク特有の下線を消す */
+        transition: opacity 0.2s; /* ホバー時のアニメーション設定 */
     }
+    /* カーソルを合わせた時に少し薄くして「押せる感」を出す */
+    .fake-logo:hover {
+        opacity: 0.7; 
+    }
+    
     .logo-mark {
         background: linear-gradient(135deg, #e60012 50%, #f39800 50%);
         color: white;
@@ -145,10 +152,11 @@ st.markdown("""
     </style>
 
     <div class="header-container">
-        <div class="fake-logo">
+        <a href="https://www.saishin.co.jp/" target="_blank" class="fake-logo">
             <div class="logo-mark">S</div>
             埼玉縣信用金庫
-        </div>
+        </a>
+        
         <div class="utility-menu">
             <a href="#" class="utility-link">お問合せ・ご意見</a>
             <a href="#" class="utility-link">よくあるご質問</a>

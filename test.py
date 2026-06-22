@@ -6,7 +6,7 @@ st.set_page_config(page_title="さいしん・若者応援プロジェクト", l
 # 2. 画像を使わず、すべてHTMLとCSSで描画する
 st.markdown("""
     <style>
-    /* 全体の背景色と上の余白（見切れ解消の4.5remを維持） */
+    /* 全体の背景色と上の余白 */
     .main { background-color: #f9fbf9; }
     .block-container { padding-top: 4.5rem; max-width: 800px; }
 
@@ -45,16 +45,13 @@ st.markdown("""
         border-radius: 5px 5px 0 0;
         overflow: hidden;
     }
-    
-    /* --- 修正点：すべてのタブを「flex: 1」で完全等分し、中央揃えを強制 --- */
     .fake-menu-tab-active, .fake-menu-tab {
-        flex: 1; /* すべての幅を均等に1にする */
+        flex: 1; 
         display: flex;
-        align-items: center; /* 縦の中央揃え */
-        justify-content: center; /* 横の中央揃え */
-        padding: 12px 5px; /* 上下の余白 */
+        align-items: center; 
+        justify-content: center; 
+        padding: 12px 5px; 
     }
-    
     .fake-menu-tab-active {
         background-color: white;
         color: #333;
@@ -75,13 +72,20 @@ st.markdown("""
         border-bottom: 1px solid #ddd;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
+    
+    /* --- 修正点：右側に薄い縦線を入れ、一番最後だけ線を消す --- */
     .fake-menu-sub {
-        flex: 1; /* サブメニューも等分 */
+        flex: 1; 
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 10px 2px;
+        border-right: 1px solid #f0e1e1; /* ここで薄い縦線を追加 */
     }
+    .fake-menu-sub:last-child {
+        border-right: none; /* 一番右端（相談・手続きする）の右には線を入れない */
+    }
+    
     .arrow { color: #f39800; font-size: 9px; margin-left: 3px; }
 
     /* --- 4. 追従ボタン（赤）のデザイン --- */

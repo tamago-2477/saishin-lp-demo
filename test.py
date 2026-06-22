@@ -13,10 +13,10 @@ st.markdown("""
     /* --- 0. ヘッダー全体（ロゴと右側のメニューを横並びにする枠） --- */
     .header-container {
         display: flex;
-        justify-content: space-between; /* 左右に離して配置 */
-        align-items: center; /* 縦の真ん中で揃える */
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: 15px;
-        flex-wrap: wrap; /* 画面が狭い時に重ならないよう折り返す設定 */
+        flex-wrap: wrap;
         gap: 15px;
     }
 
@@ -170,5 +170,5 @@ st.markdown("""
         <div class="fake-menu-sub">相談・手続きする <span class="arrow">▼</span></div>
     </div>
 
-    <a href="https://www.saishin.co.jp/kojin/" target="_blank" class="sticky-btn">スマホで口座開設</a>
+    <a href="https://www.saishin.co.jp/kojin/" target="_blank" class="sticky-btn">アプリで口座開設</a>
 """, unsafe_allow_html=True)

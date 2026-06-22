@@ -12,7 +12,7 @@ except AttributeError:
     current_page = st.experimental_get_query_params().get("page", ["home"])[0]
 
 # ==========================================
-# 2. 共通CSS（理想形のコードをそのまま使用）
+# 2. 共通CSS
 # ==========================================
 st.markdown("""
     <style>
@@ -20,7 +20,11 @@ st.markdown("""
     .block-container { padding-top: 3rem; max-width: 800px; }
 
     .header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
-    .fake-logo { font-family: sans-serif; font-size: 26px; font-weight: bold; color: #4a4a4a; display: flex; align-items: center; gap: 10px; text-decoration: none;}
+    
+    /* ★修正ポイント：color に !important を追加し、hover 設定を追加★ */
+    .fake-logo { font-family: sans-serif; font-size: 26px; font-weight: bold; color: #4a4a4a !important; display: flex; align-items: center; gap: 10px; text-decoration: none !important; transition: opacity 0.2s; }
+    .fake-logo:hover { opacity: 0.7; cursor: pointer; }
+    
     .logo-mark { background: linear-gradient(135deg, #e60012 50%, #f39800 50%); color: white; border-radius: 50%; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 22px; font-style: italic; }
     
     .utility-menu { display: flex; align-items: center; gap: 15px; font-size: 12px; }
@@ -45,7 +49,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==========================================
-# 3. 共通ヘッダー＆メニュー（★常に表示させる部分★）
+# 3. 共通ヘッダー＆メニュー
 # ==========================================
 st.markdown("""
     <div class="header-container">
@@ -71,15 +75,15 @@ with tab4:
 
 
 # ==========================================
-# 4. ページ切り替え（★ヘッダーの下身だけが入れ替わる★）
+# 4. ページ切り替え
 # ==========================================
 if current_page == "account":
-    # --- 口座開設ページ（チラシ画像を表示） ---
+    # --- 口座開設ページ ---
     st.markdown("<br>", unsafe_allow_html=True)
     st.image("app_pr.png", use_container_width=True)
     st.write("---")
     st.markdown('<a href="?page=home" target="_self" style="display: inline-block; padding: 10px 20px; background-color: #f0f0f0; color: #333; border-radius: 5px; font-weight: bold; text-decoration: none;">← ホーム画面に戻る</a>', unsafe_allow_html=True)
 
 else:
-    # --- ホーム画面（追従ボタンを表示） ---
+    # --- ホーム画面 ---
     st.markdown('<a href="?page=account" target="_self" class="sticky-btn">アプリで口座開設</a>', unsafe_allow_html=True)

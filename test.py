@@ -10,13 +10,22 @@ st.markdown("""
     .main { background-color: #f9fbf9; }
     .block-container { padding-top: 4.5rem; max-width: 800px; }
 
+    /* --- 0. ヘッダー全体（ロゴと右側のメニューを横並びにする枠） --- */
+    .header-container {
+        display: flex;
+        justify-content: space-between; /* 左右に離して配置 */
+        align-items: center; /* 縦の真ん中で揃える */
+        margin-bottom: 15px;
+        flex-wrap: wrap; /* 画面が狭い時に重ならないよう折り返す設定 */
+        gap: 15px;
+    }
+
     /* --- 1. ロゴ部分のデザイン --- */
     .fake-logo {
         font-family: sans-serif;
         font-size: 26px;
         font-weight: bold;
         color: #4a4a4a;
-        margin-bottom: 15px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -32,6 +41,33 @@ st.markdown("""
         align-items: center;
         font-size: 22px;
         font-style: italic;
+    }
+
+    /* --- 1.5. 右上のユーティリティメニュー --- */
+    .utility-menu {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 12px;
+    }
+    .utility-link {
+        color: #333;
+        text-decoration: none;
+    }
+    .utility-link:hover {
+        text-decoration: underline;
+    }
+    .utility-btn-red {
+        background-color: #e60012;
+        color: white !important;
+        padding: 8px 16px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+    .utility-btn-red:hover {
+        background-color: #c1000f;
     }
 
     /* --- 2. メニューバー（赤）のデザイン --- */
@@ -72,20 +108,17 @@ st.markdown("""
         border-bottom: 1px solid #ddd;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    
-    /* --- 修正点：右側に薄い縦線を入れ、一番最後だけ線を消す --- */
     .fake-menu-sub {
         flex: 1; 
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 10px 2px;
-        border-right: 1px solid #f0e1e1; /* ここで薄い縦線を追加 */
+        border-right: 1px solid #f0e1e1;
     }
     .fake-menu-sub:last-child {
-        border-right: none; /* 一番右端（相談・手続きする）の右には線を入れない */
+        border-right: none; 
     }
-    
     .arrow { color: #f39800; font-size: 9px; margin-left: 3px; }
 
     /* --- 4. 追従ボタン（赤）のデザイン --- */
@@ -111,9 +144,16 @@ st.markdown("""
     .sticky-btn:hover { background-color: #c1000f; }
     </style>
 
-    <div class="fake-logo">
-        <div class="logo-mark">S</div>
-        埼玉縣信用金庫
+    <div class="header-container">
+        <div class="fake-logo">
+            <div class="logo-mark">S</div>
+            埼玉縣信用金庫
+        </div>
+        <div class="utility-menu">
+            <a href="#" class="utility-link">お問合せ・ご意見</a>
+            <a href="#" class="utility-link">よくあるご質問</a>
+            <a href="#" class="utility-btn-red">口座開設</a>
+        </div>
     </div>
 
     <div class="fake-menu-top">

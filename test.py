@@ -80,13 +80,27 @@ if current_page == "account":
     # --- 口座開設ページ ---
     st.markdown("<br>", unsafe_allow_html=True)
     st.image("app_pr.png", use_container_width=True)
+    
+    # ★追加：アプリダウンロードエリア★
+    st.markdown("""
+        <div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
+            <p style="font-weight: bold; color: #1e3a5f; font-size: 18px; margin-bottom: 10px;">アプリのダウンロードはこちら</p>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 15px;">
+                <a href="https://apps.apple.com/jp/app/%E3%81%97%E3%82%93%E3%81%8D%E3%82%93%E5%8F%A3%E5%BA%A7%E9%96%8B%E8%A8%AD%E3%82%A2%E3%83%97%E3%83%AA/id1214793529" target="_blank">
+                    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83" alt="Download on the App Store" style="height: 45px; border-radius: 6px;">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=jp.co.shinkin.ssc.open_account" target="_blank">
+                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png" alt="GET IT ON Google Play" style="height: 65px;">
+                </a>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
     st.write("---")
     st.markdown('<a href="?page=home" target="_self" style="display: inline-block; padding: 10px 20px; background-color: #f0f0f0; color: #333; border-radius: 5px; font-weight: bold; text-decoration: none;">← ホーム画面に戻る</a>', unsafe_allow_html=True)
 
 else:
     # --- ホーム画面 ---
-    
-    # ★追加：スクロールを実感するためのダミーコンテンツ（右端に縦線）★
     st.markdown("""
         <div style="height: 1500px; border-right: 3px dashed #ddd; margin-top: 30px; padding-right: 20px; text-align: right; color: #aaa;">
             <p>↓ スクロールして追従ボタンの動きをテスト ↓</p>

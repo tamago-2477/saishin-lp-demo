@@ -3,13 +3,14 @@ import streamlit as st
 # 1. ページ設定（※必ずコードの一番最初に書きます）
 st.set_page_config(page_title="さいしん・若者応援プロジェクト", layout="centered")
 
-# 2. ロゴの表示（左上に配置）
-# カラムを使って、左側だけにロゴを配置してそれっぽく見せます
+# 2. ヘッダー部分（ロゴとメニュー）
+# --- ロゴ画像 ---
 col_logo, col_empty = st.columns([1, 2])
 with col_logo:
-    # GitHubにアップロードしたロゴ画像のファイル名と合わせます
-    # ここでは "logo.png" となっています
     st.image("logo.png", use_container_width=True)
+
+# --- メニュー画像（ここに復活させました！） ---
+st.image("menu.png", use_container_width=True)
 
 # 3. デザインの調整（CSS）
 st.markdown("""
@@ -25,6 +26,5 @@ st.markdown("""
     }
     .sticky-btn:hover { background-color: #008f58; }
     </style>
-    # 追従ボタンのHTML
     <a href="https://www.saishin.co.jp/kojin/" target="_blank" class="sticky-btn">👉 スマホで口座開設（最短3分）</a>
 """, unsafe_allow_html=True)

@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="さいしん・若者応援プロジェクト", layout="centered")
 
 # 2. ヘッダー部分（ロゴとメニュー）
-col_logo, col_empty = st.columns([1, 1.5]) # ロゴが少し大きめに見えるように比率を微調整
+col_logo, col_empty = st.columns([1, 1.5]) 
 with col_logo:
     st.image("logo.png", use_container_width=True)
 
@@ -13,9 +13,9 @@ st.image("menu.png", use_container_width=True)
 # 3. デザインの調整（CSS）
 st.markdown("""
     <style>
-    /* 全体の背景色と、上の余白を少し詰める */
+    /* 全体の背景色と、上の余白を調整（ここを2remから4remに広げて見切れを直しました） */
     .main { background-color: #f9fbf9; }
-    .block-container { padding-top: 2rem; max-width: 760px; }
+    .block-container { padding-top: 4rem; max-width: 760px; }
 
     /* 追従ボタンのデザイン */
     .sticky-btn {
@@ -23,10 +23,7 @@ st.markdown("""
         background-color: #00A968; color: white !important; padding: 15px 30px;
         border-radius: 50px; font-weight: bold; text-decoration: none;
         z-index: 999; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        
-        /* ここを修正：画像が入っている枠の幅（最大760px）にピッタリ合わせる */
         width: 90%; max-width: 760px; 
-        
         text-align: center;
         font-size: 18px;
     }

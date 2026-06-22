@@ -21,7 +21,6 @@ st.markdown("""
 
     .header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
     
-    /* ★修正ポイント：color に !important を追加し、hover 設定を追加★ */
     .fake-logo { font-family: sans-serif; font-size: 26px; font-weight: bold; color: #4a4a4a !important; display: flex; align-items: center; gap: 10px; text-decoration: none !important; transition: opacity 0.2s; }
     .fake-logo:hover { opacity: 0.7; cursor: pointer; }
     
@@ -86,4 +85,15 @@ if current_page == "account":
 
 else:
     # --- ホーム画面 ---
+    
+    # ★追加：スクロールを実感するためのダミーコンテンツ（右端に縦線）★
+    st.markdown("""
+        <div style="height: 1500px; border-right: 3px dashed #ddd; margin-top: 30px; padding-right: 20px; text-align: right; color: #aaa;">
+            <p>↓ スクロールして追従ボタンの動きをテスト ↓</p>
+            <p style="margin-top: 50px;">(ここに本来はお知らせやキャンペーン情報などが並びます)</p>
+            <p style="margin-top: 600px;">（スクロール中...）</p>
+            <p style="margin-top: 600px;">（ページの一番下です）</p>
+        </div>
+    """, unsafe_allow_html=True)
+
     st.markdown('<a href="?page=account" target="_self" class="sticky-btn">アプリで口座開設</a>', unsafe_allow_html=True)

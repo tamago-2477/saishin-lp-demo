@@ -8,7 +8,8 @@ st.markdown("""
     <style>
     /* 全体の背景色と上の余白 */
     .main { background-color: #f9fbf9; }
-    .block-container { padding-top: 3rem; max-width: 800px; }
+    /* --- 修正点：上の余白を広げて見切れを解消 --- */
+    .block-container { padding-top: 4.5rem; max-width: 800px; }
 
     /* --- 1. ロゴ部分のデザイン --- */
     .fake-logo {

@@ -3,21 +3,29 @@ import streamlit as st
 # 1. ページ設定
 st.set_page_config(page_title="さいしん・若者応援プロジェクト", layout="centered")
 
-# 2. CSS定義
+# 2. CSS：ヘッダーの「見切れ」を確実に防ぎ、リンク色も制御
 st.markdown("""
     <style>
+    /* 全体の背景と余白をシンプルに */
     .main { background-color: #f9fbf9; }
-    .block-container { padding-top: 2rem; max-width: 800px; }
+    .block-container { padding-top: 1rem; max-width: 800px; }
     
-    /* --- ヘッダー・メニュー部分（固定表示） --- */
+    /* ヘッダーのレイアウト */
     .header-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .fake-logo { font-family: sans-serif; font-size: 26px; font-weight: bold; color: #4a4a4a; display: flex; align-items: center; gap: 10px; text-decoration: none; transition: 0.2s; }
+    
+    /* ロゴ（リンク色を青にせず、黒で維持。ホバーで少し薄く） */
+    .fake-logo { 
+        font-family: sans-serif; font-size: 26px; font-weight: bold; color: #4a4a4a !important; 
+        display: flex; align-items: center; gap: 10px; text-decoration: none; transition: 0.2s; 
+    }
     .fake-logo:hover { opacity: 0.7; }
     .logo-mark { background: linear-gradient(135deg, #e60012 50%, #f39800 50%); color: white; border-radius: 50%; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 22px; font-style: italic; }
+    
     .utility-menu { display: flex; align-items: center; gap: 15px; font-size: 12px; }
     .utility-link { color: #333; text-decoration: none; }
     .utility-btn-red { background-color: #e60012; color: white !important; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; }
 
+    /* メニューのデザイン */
     .stTabs [data-baseweb="tab-list"] { gap: 0; background-color: #e60012; border-radius: 5px 5px 0 0; }
     .stTabs [data-baseweb="tab"] { height: 45px; background-color: #e60012; color: white; border-radius: 0; border-left: 1px solid #ff4d4d; flex: 1; }
     .stTabs [aria-selected="true"] { background-color: white !important; color: #333 !important; border-top: 4px solid #e60012; }
@@ -25,20 +33,14 @@ st.markdown("""
     .sub-menu-container { display: flex; background-color: white; border: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-top: -15px; margin-bottom: 20px; }
     .sub-item { flex: 1; text-align: center; padding: 12px 5px; font-size: 12px; font-weight: bold; color: #333; border-right: 1px solid #f0e1e1; }
     .sub-item:last-child { border-right: none; }
-    
+    .arrow { color: #f39800; font-size: 10px; margin-left: 5px; }
+
     .sticky-btn { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: #e60012; color: white !important; padding: 15px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; z-index: 999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); width: 90%; max-width: 760px; text-align: center; font-size: 18px; }
     </style>
 """, unsafe_allow_html=True)
 
-# 3. ページの状態管理
-if 'active_tab' not in st.session_state: st.session_state.active_tab = "個人のお客さま"
-try:
-    current_page = st.query_params.get("page", "home")
-except:
-    current_page = st.experimental_get_query_params().get("page", ["home"])[0]
-
-# --- 共通ヘッダー（常に表示） ---
-st.markdown(f'''
+# 3. 常に表示するヘッダー
+st.markdown('''
     <div class="header-container">
         <a href="?page=home" target="_self" class="fake-logo"><div class="logo-mark">S</div>埼玉縣信用金庫</a>
         <div class="utility-menu">
@@ -49,17 +51,26 @@ st.markdown(f'''
     </div>
 ''', unsafe_allow_html=True)
 
-# --- ページコンテンツの振り分け ---
+# 4. ページ切り替え処理
+try:
+    current_page = st.query_params.get("page", "home")
+except:
+    current_page = st.experimental_get_query_params().get("page", ["home"])[0]
+
 if current_page == "account":
     st.image("app_pr.png", use_container_width=True)
-    st.write("---")
-    st.markdown('<a href="?page=home" target="_self">← ホームに戻る</a>', unsafe_allow_html=True)
+    st.markdown('<a href="?page=home" target="_self">← ホームへ戻る</a>', unsafe_allow_html=True)
 else:
-    # 共通メニュー（ホーム画面時のみ表示）
+    # メニュー（ホーム画面時のみ表示）
     tab1, tab2, tab3, tab4 = st.tabs(["個人のお客さま", "法人（個人事業主）のお客さま", "《さいしん》について", "採用のご案内"])
     
-    # ※各タブの中身（サブメニュー）の表示処理は以前と同じなので省略
-    # ... (前回のコードの "tab1〜tab4" の中身をここに入れてください) ...
-
-    # 追従ボタン
+    with tab1:
+        st.markdown('<div class="sub-menu-container"><div class="sub-item">ためる・ふやす <span class="arrow">▼</span></div><div class="sub-item">かりる <span class="arrow">▼</span></div><div class="sub-item">そなえる <span class="arrow">▼</span></div><div class="sub-item">便利に使う <span class="arrow">▼</span></div><div class="sub-item">相談・手続きする <span class="arrow">▼</span></div></div>', unsafe_allow_html=True)
+    with tab2:
+        st.markdown('<div class="sub-menu-container"><div class="sub-item">資金調達 <span class="arrow">▼</span></div><div class="sub-item">ビジネスサポート <span class="arrow">▼</span></div><div class="sub-item">各種サービス <span class="arrow">▼</span></div></div>', unsafe_allow_html=True)
+    with tab3:
+        st.markdown('<div class="sub-menu-container"><div class="sub-item">《さいしん》<br>のご紹介 <span class="arrow">▼</span></div><div class="sub-item">《さいしん》<br>のブランド戦略</div><div class="sub-item">中期経営計画</div><div class="sub-item">ディスクロージャー</div><div class="sub-item">SDGs /<br>地域密着 <span class="arrow">▼</span></div><div class="sub-item">施設貸出のご案内</div></div>', unsafe_allow_html=True)
+    with tab4:
+        st.markdown('<div class="sub-menu-container"><div class="sub-item">新卒採用</div><div class="sub-item">パートタイマー採用</div><div class="sub-item">キャリア採用</div><div class="sub-item">キャリアリターン採用 <span class="arrow">▼</span></div><div class="sub-item">一般事業主行動計画</div></div>', unsafe_allow_html=True)
+    
     st.markdown('<a href="?page=account" target="_self" class="sticky-btn">アプリで口座開設</a>', unsafe_allow_html=True)

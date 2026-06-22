@@ -81,16 +81,16 @@ if current_page == "account":
     st.markdown("<br>", unsafe_allow_html=True)
     st.image("app_pr.png", use_container_width=True)
     
-    # ★追加：アプリダウンロードエリア★
+    # ★修正：Google Playのサイズを少し小さく調整しました★
     st.markdown("""
         <div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
             <p style="font-weight: bold; color: #1e3a5f; font-size: 18px; margin-bottom: 10px;">アプリのダウンロードはこちら</p>
             <div style="display: flex; justify-content: center; align-items: center; gap: 15px;">
-                <a href="https://apps.apple.com/jp/app/%E3%81%97%E3%82%93%E3%81%8D%E3%82%93%E5%8F%A3%E5%BA%A7%E9%96%8B%E8%A8%AD%E3%82%A2%E3%83%97%E3%83%AA/id1214793529" target="_blank">
-                    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83" alt="Download on the App Store" style="height: 45px; border-radius: 6px;">
+                <a href="https://apps.apple.com/jp/app/%E3%81%97%E3%82%93%E3%81%8D%E3%82%93%E5%8F%A3%E5%BA%A7%E9%96%8B%E8%A8%AD%E3%82%A2%E3%83%97%E3%83%AA/id1214793529" target="_blank" style="height: 50px; display: flex; align-items: center;">
+                    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83" alt="Download on the App Store" style="height: 50px; border-radius: 7px;">
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=jp.co.shinkin.ssc.open_account" target="_blank">
-                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png" alt="GET IT ON Google Play" style="height: 65px;">
+                <a href="https://play.google.com/store/apps/details?id=jp.co.shinkin.ssc.open_account" target="_blank" style="height: 50px; display: flex; align-items: center;">
+                    <img src="https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png" alt="Google Play で手に入れよう" style="height: 55px;">
                 </a>
             </div>
         </div>
